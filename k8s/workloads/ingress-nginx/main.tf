@@ -1,7 +1,7 @@
 provider "helm" {
   kubernetes {
     config_context = var.k8s_context
-    config_path    = var.k8s_kubeconfig
+    config_path    = pathexpand(var.k8s_kubeconfig)
   }
 }
 
