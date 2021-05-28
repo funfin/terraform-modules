@@ -6,13 +6,13 @@ provider "helm" {
 }
 
 resource "helm_release" "external-dns-do" {
-  count      = var.install ? 1 : 0
-  name       = "external-dns-do"
-  namespace  = "external-dns"
+  count            = var.install ? 1 : 0
+  name             = "external-dns-do"
+  namespace        = "external-dns"
   create_namespace = true
-  repository = "https://charts.bitnami.com/bitnami"
-  chart      = "external-dns"
-  version    = "3.3.0"
+  repository       = "https://charts.bitnami.com/bitnami"
+  chart            = "external-dns"
+  version          = "3.3.0"
 
   set {
     type  = "string"

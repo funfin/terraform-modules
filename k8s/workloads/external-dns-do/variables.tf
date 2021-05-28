@@ -25,7 +25,7 @@ variable "dns_domain" {
 }
 
 variable "policy" {
-  type = string
+  type    = string
   default = "sync"
   # default = "upsert-only"
 }
