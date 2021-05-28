@@ -6,7 +6,7 @@ provider "helm" {
 }
 
 provider "kubernetes" {
-  config_path    = var.k8s_kubeconfig
+  config_path    = pathexpand(var.k8s_kubeconfig)
   config_context = var.k8s_context
 }
 
@@ -57,6 +57,8 @@ resource "helm_release" "cert-manager" {
 
 
 data "template_file" "clusterissuers" {
+  count = var.install ? 1 : 0
+
   template = file("${path.module}/clusterissuers.yaml")
 
   vars = {
